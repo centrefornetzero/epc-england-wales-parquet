@@ -1,4 +1,4 @@
-# epc-england-wales-loader
+# epc-england-wales-parquet
 
 Convert [EPC data for England & Wales](https://epc.opendatacommunities.org) into Parquet format for fast and easy analysis or loading into data warehouses like BigQuery.
 
