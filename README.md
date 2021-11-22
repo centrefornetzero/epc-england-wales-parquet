@@ -5,5 +5,5 @@ Convert [EPC data for England & Wales](https://epc.opendatacommunities.org) into
 ## Usage
 
 ```
-python epc.py path/to/all-domestic-certificates.zip parquet_files
+python {recommendations,certificates} epc.py path/to/all-domestic-certificates.zip parquet_files
 ```

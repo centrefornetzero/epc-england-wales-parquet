@@ -104,6 +104,17 @@ CERTIFICATE_SCHEMA = {
 }
 
 
+RECOMMENDATIONS_SCHEMA = {
+    "LMK_KEY": pyarrow.string(),
+    "IMPROVEMENT_ITEM": pyarrow.int64(),
+    "IMPROVEMENT_SUMMARY_TEXT": pyarrow.string(),
+    "IMPROVEMENT_DESCR_TEXT": pyarrow.string(),
+    "IMPROVEMENT_ID": pyarrow.int64(),
+    "IMPROVEMENT_ID_TEXT": pyarrow.string(),
+    "INDICATIVE_COST": pyarrow.string(),
+}
+
+
 def open_files(epc_zipfile, pattern):
     with zipfile.ZipFile(epc_zipfile, "r") as zip_file:
         matching_files = [
@@ -127,6 +138,7 @@ def csv_to_parquet(csv_file, parquet_file, column_types=None):
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
+    parser.add_argument("type", choices=["certificates", "recommendations"])
     parser.add_argument("epc_zipfile")
     parser.add_argument("output_path")
     return parser.parse_args(args)
@@ -147,6 +159,16 @@ def convert_files(epc_zipfile, file_pattern, schema, output_path):
 
 if __name__ == "__main__":
     args = parse_args()
-    convert_files(
-        args.epc_zipfile, "*/certificates.csv", CERTIFICATE_SCHEMA, args.output_path
-    )
+
+    if args.type == "certificates":
+        convert_files(
+            args.epc_zipfile, "*/certificates.csv", CERTIFICATE_SCHEMA, args.output_path
+        )
+
+    if args.type == "recommendations":
+        convert_files(
+            args.epc_zipfile,
+            "*/recommendations.csv",
+            RECOMMENDATIONS_SCHEMA,
+            args.output_path,
+        )
