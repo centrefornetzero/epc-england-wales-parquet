@@ -86,11 +86,11 @@ if __name__ == "__main__":
         "FLAT_TOP_STOREY": pyarrow.string(),
         "FLAT_STOREY_COUNT": pyarrow.int64(),
         "MAIN_HEATING_CONTROLS": pyarrow.string(),
-        "MULTI_GLAZE_PROPORTION": pyarrow.float64(),
+        "MULTI_GLAZE_PROPORTION": pyarrow.float64(),  # int but values are floats, e.g 1.0
         "GLAZED_TYPE": pyarrow.string(),
         "GLAZED_AREA": pyarrow.string(),
-        "EXTENSION_COUNT": pyarrow.float64(),
-        "NUMBER_HABITABLE_ROOMS": pyarrow.float64(),
+        "EXTENSION_COUNT": pyarrow.float64(),  # int but values are floats, e.g 1.0
+        "NUMBER_HABITABLE_ROOMS": pyarrow.float64(),  # int but values are floats, e.g 1.0
         "NUMBER_HEATED_ROOMS": pyarrow.float64(),
         "LOW_ENERGY_LIGHTING": pyarrow.int64(),
         "NUMBER_OPEN_FIREPLACES": pyarrow.int64(),
