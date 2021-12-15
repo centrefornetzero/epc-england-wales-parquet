@@ -138,7 +138,6 @@ def csv_to_parquet(csv_file, parquet_file, column_types=None):
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("type", choices=["certificates", "recommendations"])
     parser.add_argument("epc_zipfile")
     parser.add_argument("output_path")
     return parser.parse_args(args)
@@ -160,15 +159,16 @@ def convert_files(epc_zipfile, file_pattern, schema, output_path):
 if __name__ == "__main__":
     args = parse_args()
 
-    if args.type == "certificates":
-        convert_files(
-            args.epc_zipfile, "*/certificates.csv", CERTIFICATE_SCHEMA, args.output_path
-        )
+    convert_files(
+        args.epc_zipfile,
+        "*/certificates.csv",
+        CERTIFICATE_SCHEMA,
+        os.path.join(args.output_path, "certificates"),
+    )
 
-    if args.type == "recommendations":
-        convert_files(
-            args.epc_zipfile,
-            "*/recommendations.csv",
-            RECOMMENDATIONS_SCHEMA,
-            args.output_path,
-        )
+    convert_files(
+        args.epc_zipfile,
+        "*/recommendations.csv",
+        RECOMMENDATIONS_SCHEMA,
+        os.path.join(args.output_path, "recommendations"),
+    )

@@ -53,15 +53,7 @@ def test_csv_to_parquet(tmp_path):
     assert table["age"].type == "int8"
 
 
-def test_parse_args_for_certificates():
-    args = parse_args(["certificates", "archive.zip", "destination"])
-    assert args.type == "certificates"
-    assert args.epc_zipfile == "archive.zip"
-    assert args.output_path == "destination"
-
-
-def test_parse_args_for_recommendations():
-    args = parse_args(["recommendations", "archive.zip", "destination"])
-    assert args.type == "recommendations"
+def test_parse_args():
+    args = parse_args(["archive.zip", "destination"])
     assert args.epc_zipfile == "archive.zip"
     assert args.output_path == "destination"
