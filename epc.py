@@ -101,6 +101,8 @@ CERTIFICATE_SCHEMA = {
     "TENURE": pyarrow.string(),
     "FIXED_LIGHTING_OUTLETS_COUNT": pyarrow.float64(),
     "LOW_ENERGY_FIXED_LIGHT_COUNT": pyarrow.float64(),
+    "UPRN": pyarrow.int64(),
+    "UPRN_SOURCE": pyarrow.string(),
 }
 
 
